@@ -1,0 +1,178 @@
+/** * App CSS
+ * This file contains the global styles for the application.
+ * It includes typography, colors, and basic layout styles.
+ * @author Rabih Kobaissi
+ * @version 1.0.0 
+ */
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+
+/* Root variables */
+:root {
+    /* Brand Colors */
+    --color-primary: #FF4F4F;
+    --color-secondary: #1E1E1E;
+    --color-accent: #FFB84D;
+
+    /* Text Colors */
+    --text-primary: #1E1E1E;
+    --text-secondary: #4F4F4F;
+    --text-muted: #A0A0A0;
+    --text-inverted: #FFFFFF;
+    --link-color: var(--color-primary);
+
+    /* Background Colors */
+    --bg-light: #FFF9F6;
+    --bg-neutral: #F2F2F2;
+
+    
+    /* Font Families */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Font Sizes */
+    --fs-h1: 2rem;
+    /* 32px */
+    --fs-h2: 1.5rem;
+    /* 24px */
+    --fs-body: 1rem;
+    /* 16px */
+    --fs-small: 0.875rem;
+    /* 14px */
+}
+.bg-e-primary {
+    background-color: var(--color-primary);
+}
+.bg-e-secondary {
+    background-color: var(--color-secondary);
+}
+.bg-e-accent {
+    background-color: var(--color-accent);
+}
+.bg-e-light {
+    background-color: var(--bg-light);
+}
+.bg-e-neutral {
+    background-color: var(--bg-neutral);
+}
+.text-e-primary {
+    color: var(--text-primary);
+}
+.text-e-secondary {
+    color: var(--text-secondary);
+}
+.text-e-muted {
+    color: var(--text-muted);
+}
+.text-e-inverted {
+    color: var(--text-inverted);
+}
+.text-e-link {
+    color: var(--link-color);
+}
+.text-e-bg-primary {
+    color: var(--color-primary);
+}
+.text-e-bg-accent {
+    color: var(--color-accent);
+}
+.btn-e-primary {
+    background-color: var(--color-primary);
+    color: var(--text-inverted);
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-e-primary:hover {
+    background-color: var(--bs-btn-hover-bg);
+}
+.btn-e-accent {
+    background-color: var(--color-accent);
+    color: var(--text-inverted);
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-e-accent:hover {
+    background-color: #ffb84dbe;
+}
+
+/* Typography */
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    color: var(--text-primary);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: var(--fs-h1);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: var(--fs-h2);
+    font-weight: 600;
+}
+
+p {
+    font-size: var(--fs-body);
+    color: var(--text-secondary);
+}
+
+small {
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Button Example */
+button {
+    font-family: var(--font-body);
+    background-color: var(--color-primary);
+    color: var(--text-inverted);
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e64343;
+    /* darker coral */
+}
+
+code {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    color: var(--color-accent);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+}

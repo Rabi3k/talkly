@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
+
+        {% block stylesheets %}
+        {% endblock %}
+        
+        
+        {% block javascripts %}
+            
+        {% endblock %}
+        
+        {% block importmap %}
+            {{ importmap('app') }}
+        {% endblock %}
+        
+        {% block styles %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+
+    {% block JavaScriptCodes %}
+    {% endblock %}
+</html>

@@ -1,0 +1,27 @@
+{% extends 'main/index.html.twig' %}
+
+{% block title %}
+    Hello CardsController!
+{% endblock %}
+
+{% block MainBody %}
+    <h2 class="text-center mb-4">
+        {{ cards.title }}
+    </h2>
+    <div class="row mt-4 justify-content-end d-flex">
+        <div class="col-md-12  ">
+            <button class="btn btn-e-accent float-end" id="start-conversation">
+                {% trans %}
+                    Refresh card
+                {% endtrans %}
+            </button>
+        </div>
+    </div>
+{% endblock MainBody %}
+{% block JavaScriptCodes %}
+<script>
+    $("#start-conversation").on("click", function() {
+        document.location.reload();
+    });
+</script>
+{% endblock %}
