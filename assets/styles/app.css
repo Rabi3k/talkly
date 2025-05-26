@@ -42,7 +42,7 @@
     /* 14px */
 }
 .bg-e-primary {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary)!important;
 }
 .bg-e-secondary {
     background-color: var(--color-secondary);
@@ -57,7 +57,7 @@
     background-color: var(--bg-neutral);
 }
 .text-e-primary {
-    color: var(--text-primary);
+    color: var(--text-primary)!important;
 }
 .text-e-secondary {
     color: var(--text-secondary);
@@ -72,7 +72,7 @@
     color: var(--link-color);
 }
 .text-e-bg-primary {
-    color: var(--color-primary);
+    color: var(--color-primary)!important;
 }
 .text-e-bg-accent {
     color: var(--color-accent);
@@ -137,7 +137,10 @@ p {
     font-size: var(--fs-body);
     color: var(--text-secondary);
 }
-
+span {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+}
 small {
     font-size: var(--fs-small);
     color: var(--text-muted);

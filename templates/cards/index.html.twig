@@ -5,9 +5,19 @@
 {% endblock %}
 
 {% block MainBody %}
-    <h2 class="text-center mb-4">
-        {{ cards.title }}
-    </h2>
+    <div class="row mt-4 justify-content-end d-flex">
+        <center>
+            <span class="text-center mb-4 fs-1 text-e-bg-primary  fw-bold">
+                {{ category.title }}
+            </span>
+        </center>
+        <hr />
+        <center>
+            <span class="text-center mb-4 fs-2 fw-bold">
+                {{ cards.title }}
+            </span>
+        </center>
+    </div>
     <div class="row mt-4 justify-content-end d-flex">
         <div class="col-md-12  ">
             <button class="btn btn-e-accent float-end" id="start-conversation">

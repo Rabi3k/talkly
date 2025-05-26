@@ -24,8 +24,27 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
             ['Deep Thoughts', 'Reflective and philosophical prompts.'],
             ['Pop Culture', 'TV, music, movies, and trends.'],
             ['Just for Fun', 'Random and silly prompts.'],
+            ['Music', 'Discuss your favorite tunes and artists.'],
+            ['Movies', 'Talk about films, genres, and directors.'],
+            ['Books', 'Share your favorite reads and authors.'],
+            ['Travel', 'Explore destinations and travel stories.'],
+            ['Food', 'Culinary delights and recipes to share.'],
+            ['Hobbies', 'Discuss your passions and pastimes.'],
+            ['Pets', 'Share stories about your furry friends.'],
+            ['Life Advice', 'Tips and wisdom for everyday life.'],
+            ['Tech Talk', 'Latest gadgets, software, and innovations.'],
+            ['Gaming', 'Video games, board games, and more.'],
+            ['Couples', 'Prompts for couples to connect and share.'],
+            ['Family', 'Conversations about family life and dynamics.'],
+            ['Work', 'Discuss careers, jobs, and workplace experiences.'],
+            ['Education', 'Learning, schools, and academic life.'],
+            ['Health & Wellness', 'Physical and mental well-being topics.'],
+            ['Fashion', 'Style, trends, and personal fashion choices.'],
+            ['Art & Design', 'Creative discussions about art and design.'],
+            ['History', 'Explore historical events and figures.'],
+            ['Science', 'Curious about the universe? Let’s talk science!'],
             ['Developer', 'Questions for developers about tech, code, and life.'],
-            ['FX Designer', 'Conversation starters for visual effects artists and motion designers.']  
+            ['FX Designer', 'Conversation starters for visual effects artists and motion designers.'] 
         ];
 
         foreach ($categories as [$title, $description]) {
@@ -36,13 +55,21 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
             $category->setUuid(Uuid::v4()); // Generate a new UUID for the category
             $manager->persist($category);
 
-            $refKey = 'category_' . strtolower(str_replace(' ', '_', $title));
+            $refKey = 'category_' . $this->slugifyCategory($title);
             $this->addReference($refKey, $category);
         }
 
         $manager->flush();
     }
-
+    private function slugifyCategory(string $text): string
+    {
+        // Replace non-word characters with underscores
+        $text = preg_replace('/[^\w]+/', '_', $text);
+        // Trim leading/trailing underscores
+        $text = trim($text, '_');
+        // Convert to lowercase
+        return strtolower($text);
+    }
     public function getDependencies(): array
     {
         return [
