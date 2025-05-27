@@ -12,7 +12,7 @@ class LanguageFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        $languages = [
+       /* $languages = [
             ['en', 'English'],
             ['da', 'Danish']
         ];
@@ -24,6 +24,6 @@ class LanguageFixtures extends Fixture
             // Optional: save as reference for other fixtures
             $this->addReference("lang_$code", $language);
         }
-        $manager->flush();
+        $manager->flush();*/
     }
 }

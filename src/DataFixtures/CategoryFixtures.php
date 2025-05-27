@@ -15,7 +15,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         // Correct reference retrieval
-        $language = $this->getReference('lang_en', Language::class);
+       /* $language = $this->getReference('lang_en', Language::class);
 
 
         $categories = [
@@ -59,7 +59,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
             $this->addReference($refKey, $category);
         }
 
-        $manager->flush();
+        $manager->flush();*/
     }
     private function slugifyCategory(string $text): string
     {

@@ -29,6 +29,9 @@ class Cards
     #[ORM\JoinColumn(name:"category_id" ,referencedColumnName: 'id', nullable: false)]
     private ?Category $category_id = null;
 
+    #[ORM\Column(type: Types::JSON, nullable: true)]
+    private ?array $choices = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,6 +76,18 @@ class Cards
     public function setCategoryId(?category $category_id): static
     {
         $this->category_id = $category_id;
+
+        return $this;
+    }
+
+    public function getChoices(): ?array
+    {
+        return $this->choices;
+    }
+
+    public function setChoices(?array $choices): static
+    {
+        $this->choices = $choices;
 
         return $this;
     }
