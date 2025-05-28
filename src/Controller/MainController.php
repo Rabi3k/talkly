@@ -18,7 +18,7 @@ final class MainController extends AbstractController
     {
         // This is the main entry point of the application.
 
-        $categories = $this->categoryRepository->findAll();
+        $categories = $this->categoryRepository->getActive();
 
         // It renders the main index template.
         return $this->render('main/index.html.twig', [

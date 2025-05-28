@@ -33,6 +33,9 @@ class Category
     #[ORM\Column(type: 'uuid')]
     private ?Uuid $uuid = null;
 
+    #[ORM\Column]
+    private ?bool $active = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Category
     public function setUuid(Uuid $uuid): static
     {
         $this->uuid = $uuid;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
 
         return $this;
     }

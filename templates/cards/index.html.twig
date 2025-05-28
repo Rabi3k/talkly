@@ -23,9 +23,11 @@
         </center>
             {% if cards.choices %}
                 <p class="mb-4 fs-3">
-                    <ul class="justify-content-center d-flex row row-cols-md-1 row-cols-lg-2">
+                    <ul class="row row-cols-md-1 row-cols-lg-2">
                         {% for choice in cards.choices %}
-                            <li class="fs-4 fw-bold col">{{ choice }}</li>
+                        <div class="col p-1 justify-content-center d-flex">
+                            <li class="fs-4 fw-bold">{{ choice }}</li>
+                        </div>
                         {% endfor %}
                     </ul>
                 </p>

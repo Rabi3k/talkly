@@ -9,13 +9,42 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\VarDumper\VarDumper;
 
 class CategoryFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
         // Correct reference retrieval
-       /* $language = $this->getReference('lang_en', Language::class);
+        // $language = $manager->getRepository(Language::class)->findOneBy(['code' => 'en']);
+        // if (!$language) {
+        //     throw new \Exception('Language with code "en" not found.');
+        // }
+        // $categories = [
+        //     [
+        //         'title' => "Finance and Accounting",
+        //         'description' => "Discuss financial strategies, accounting principles, and investment tips.",
+        //     ]
+        // ];
+        // foreach ($categories as $categoryData) {
+        //     $category = new Category();
+        //     if (!isset($categoryData['title']) || !isset($categoryData['description'])) {
+        //         var_dump($categoryData);
+        //         throw new \Exception('Category data must contain title and description.');
+        //     }
+        //     $category->setTitle($categoryData['title']);
+        //     $category->setDescription($categoryData['description']);
+        //     $category->setLanguageCode($language); // Set the language code
+        //     $category->setUuid(Uuid::v4()); // Generate a new UUID for the category
+
+        //     $manager->persist($category);
+
+        //     // Create a reference for this category
+
+        // }
+        // $manager->flush();
+        
+        /* $language = $this->getReference('lang_en', Language::class);
 
 
         $categories = [
