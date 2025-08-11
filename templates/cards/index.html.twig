@@ -11,7 +11,26 @@
                 {{ category.title }}
             </span>
         </center>
-        <hr />
+        <div class="col-md-4 float-end p-2">
+            {# Facebook #}
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ path('app_card_show', {'id': cards.id}, true) }}&quote={{ cards.title|url_encode }}%0A{{ cards.description|url_encode }}" target="_blank" class="btn btn-primary btn-sm me-1">
+                <i class="bi bi-facebook"></i>Facebook
+            </a>
+            {# Twitter #}
+            <a href="https://twitter.com/intent/tweet?url={{ path('app_card_show', {'id': cards.id}, true) }}&text={{ cards.title|url_encode }}%0A{{ cards.description|url_encode }}" target="_blank" class="btn btn-info btn-sm me-1">
+                <i class="bi bi-twitter-x"></i>Twitter
+            </a>
+            {# WhatsApp #}
+            <a href="https://api.whatsapp.com/send?text={{ cards.title|url_encode }}%0A{{ cards.description|url_encode }}%0A{{ path('app_card_show', {'id': cards.id}, true) }}" target="_blank" class="btn btn-success btn-sm me-1">
+                <i class="bi bi-whatsapp"></i>WhatsApp
+            </a>
+            {# Copy link for Instagram/TikTok #}
+            <button class="btn btn-secondary btn-sm" id="copy-link">
+                <i class="bi bi-clipboard-check"></i>{% trans %}Copy Link{% endtrans %}
+            </button>
+        </div>
+
+        <hr/>
         <center>
             <p class="text-center mb-4 fs-2 fw-bold">
                 {{ cards.title }}
@@ -21,34 +40,54 @@
                 {{ cards.description }}
             </p>
         </center>
-            {% if cards.choices %}
-                <p class="mb-4 fs-3">
-                    <ul class="row row-cols-md-1 row-cols-lg-2">
-                        {% for choice in cards.choices %}
+        {% if cards.choices %}
+            <p class="mb-4 fs-3">
+                <ul class="row row-cols-md-1 row-cols-lg-2">
+                    {% for choice in cards.choices %}
                         <div class="col p-1 justify-content-center d-flex">
-                            <li class="fs-4 fw-bold">{{ choice }}</li>
+                            <li class="fs-4 fw-bold">
+                                {{ choice }}
+                            </li>
                         </div>
-                        {% endfor %}
-                    </ul>
-                </p>
-            {% endif %}
+                    {% endfor %}
+                </ul>
+            </p>
+        {% endif %}
 
-        
     </div>
     <div class="row mt-4 justify-content-end d-flex">
         <div class="col-md-12  ">
             <button class="btn btn-lg btn-e-accent float-end" id="start-conversation">
                 {% trans %}
-                    Refresh card
+                Refresh card
                 {% endtrans %}
             </button>
         </div>
     </div>
 {% endblock MainBody %}
 {% block JavaScriptCodes %}
-<script>
+    <script>
     $("#start-conversation").on("click", function() {
         document.location.reload();
+    });
+    $("#copy-link").on("click", function() {
+         const url = "{{ app.request.schemeAndHttpHost }}{{ path('app_card_show', {'id': cards.id}) }}";
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Card URL copied to clipboard! You can share it on Instagram or TikTok.");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        } else {
+            // Fallback for older browsers
+            const tempInput = document.createElement("input");
+            tempInput.value = url;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Card URL copied to clipboard! You can share it on Instagram or TikTok.");
+        }
     });
 </script>
 {% endblock %}

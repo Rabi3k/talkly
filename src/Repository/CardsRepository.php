@@ -26,7 +26,7 @@ class CardsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    public function findOneRandomCard($categoryUuid): ?Cards
+    public function findOneRandomCardByCategory($categoryUuid): ?Cards
     {
         $conn = $this->getEntityManager()->getConnection();
 
@@ -40,6 +40,30 @@ class CardsRepository extends ServiceEntityRepository
         $stmt->bindValue('uuid', $categoryUuid);
         $result = $stmt->executeQuery();
      
+
+        $data = $result->fetchAssociative();
+
+
+        // VarDumper::dump($categoryUuid);
+        // VarDumper::dump($stmt);
+        // VarDumper::dump($sql);
+        // VarDumper::dump($result);
+        // VarDumper::dump($data);
+        // VarDumper::dump($this->find($data['id']));
+        // If no card is found, return null
+        
+        return $data ? $this->find($data['id']) : new Cards();
+    }
+    public function findOneRandomCard(): ?Cards
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT cr.* FROM cards cr
+            ORDER BY RAND()
+            LIMIT 1';
+
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->executeQuery();
 
         $data = $result->fetchAssociative();
 

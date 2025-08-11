@@ -70,6 +70,11 @@
                 </a>
             </div>
         {% endfor %}
+        <div class="col-xl-4 col-lg-6 col-md-12 cat-col border border-1 border-white ">
+            <a class="btn btn-e-primary w-100 fs-2 p-2" id="random" href="{{ path('app_cards', {'id': "random"}) }}">
+                {% trans %}Random Category{% endtrans %}
+            </a>
+        </div>
     </div>
     {% endblock MainBody %}
 </div>
