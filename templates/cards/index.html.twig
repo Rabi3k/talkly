@@ -1,5 +1,9 @@
 {% extends 'main/index.html.twig' %}
 
+{% block head_meta %}
+    <meta property="og:title" content="{{ cards.title }}" />
+    <meta property="og:description" content="{{ cards.description }}" />
+{% endblock %}
 {% block title %}
     Hello CardsController!
 {% endblock %}
@@ -13,7 +17,7 @@
         </center>
         <div class="col-md-4 float-end p-2">
             {# Facebook #}
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ path('app_card_show', {'id': cards.id}, true) }}&quote={{ cards.title|url_encode }}%0A{{ cards.description|url_encode }}" target="_blank" class="btn btn-primary btn-sm me-1">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{app.request.schemeAndHttpHost}}{{path('app_card_show',{'id': cards.id}, true)}}&title={{ cards.title|url_encode }}&description={{ cards.description|url_encode }}" target="_blank" class="btn btn-primary btn-sm me-1">
                 <i class="bi bi-facebook"></i>Facebook
             </a>
             {# Twitter #}
